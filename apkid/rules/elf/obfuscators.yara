@@ -866,6 +866,21 @@ rule dexprotector_a : obfuscator
     )
  }
 
+rule dexprotector_b : obfuscator
+{
+  meta:
+    description = "DexProtector"
+    url         = "https://dexprotector.com/"
+    sample      = "d506e22003798f8b3a3d3c4a1b08af1cbd64667da6f9ed8cf73bc99ded73da44"
+    author      = "Eduardo Novella"
+
+  strings:
+    $libdexpro = /\x00libdexprotector(\.[A-Za-z0-9.]{2,16})?\.so\x00/
+
+  condition:
+    is_elf and any of them
+}
+
 rule dexprotector_alice : obfuscator
 {
   meta:
@@ -882,6 +897,7 @@ rule dexprotector_alice : obfuscator
       libalice.so: /Users/receiver/git/dexprotector/12.7.11/alice-core/src/main/jni/../cpp/utils.cpp
     */
     $alice_sdk =  /dexprotector\/.*\/alice-core\/.*.cpp/
+    $alice_lib = { 006c 6962 616c 6963 652e 736f 00 } // .libalice.so.
     $dp_log    = {
       2e64 6578 705f 6372 6173 685f 7469 6d65 7200 6465 7870 5f63 7261 7368 5f00   // dexp_crash_timer.dexp_crash_.
     }

@@ -299,7 +299,7 @@ rule dexprotector_d : packer
     $encrptlib = /assets\/[A-Za-z0-9]{3,64}\.mp3/
     $encrptdat = /assets\/[A-Za-z0-9]{3,64}\.dat/
     $libdexpro = /lib\/(arm.*|x86.*)\/libdexprotector\.[A-Za-z0-9.]{2,16}\.so/
-    $libalice  = /lib\/(arm.*|x86.*)\/libalice.so/
+    $libalice  = /lib\/(arm.*|x86.*)\/libalice\.so/
 
   condition:
     is_apk and 1 of ($encrpt*) and 1 of ($lib*) and
