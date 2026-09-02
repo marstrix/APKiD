@@ -871,11 +871,11 @@ rule dexprotector_b : obfuscator
   meta:
     description = "DexProtector"
     url         = "https://dexprotector.com/"
-    sample      = "d506e22003798f8b3a3d3c4a1b08af1cbd64667da6f9ed8cf73bc99ded73da44"
+    sample      = "7c3bed8601ec22637c5619510c53cd397ae936adf698933742dc1107e1561144" // com.revolut.revolut v10.145
     author      = "Eduardo Novella"
 
   strings:
-    $libdexpro = /\x00libdexprotector(\.[A-Za-z0-9.]{2,16})?\.so\x00/
+    $lib = /\x00libdexprotector(\.[A-Za-z0-9.]{2,16})?\.so\x00/
 
   condition:
     is_elf and any of them
